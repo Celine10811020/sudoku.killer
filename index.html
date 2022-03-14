@@ -1,0 +1,106 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+  <title>數獨攻略</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.9/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.9/addons/p5.dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.9/addons/p5.sound.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="https://code.jquery.com/jquery-3.5.1.js">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js">
+
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <script src="main.js"></script>
+</head>
+
+<body>
+  <div id="container">
+      <h2>可能的數字</h2>
+      <label><input type="checkbox" id="one" value="1">1</label>
+      <label><input type="checkbox" id="two" value="2">2</label>
+      <label><input type="checkbox" id="three" value="3">3</label>
+      <label><input type="checkbox" id="four" value="4">4</label>
+      <label><input type="checkbox" id="five" value="5">5</label>
+      <label><input type="checkbox" id="six" value="6">6</label>
+      <label><input type="checkbox" id="seven" value="7">7</label>
+      <label><input type="checkbox" id="eight" value="8">8</label>
+      <label><input type="checkbox" id="nine" value="9">9</label>
+      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <label><input type="checkbox" id="none">全不選</label>
+      <label><input type="checkbox" id="all">全選</label>
+      <h2>幾格</h2>
+      <select id="cells">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+      <h2>預計加總</h2>
+      <textarea id="adds" style="height:25px; width:100px">10</textarea>
+      <br>
+      <br>
+      <input id="calculate" type="button" value="計算">
+      <hr>
+      <h2>結果</h2>
+      <textarea id="results" style="height:50px; width:200px"></textarea>
+  </div>
+
+  <script>
+    $('#calculate').bind('click', function() {
+      calculator(); //計算
+    });
+
+    {
+        $('#one').bind('click', function() {
+          number(1);
+        });
+        $('#two').bind('click', function() {
+          number(2);
+        });
+        $('#three').bind('click', function() {
+          number(3);
+        });
+        $('#four').bind('click', function() {
+          number(4);
+        });
+        $('#five').bind('click', function() {
+          number(5);
+        });
+        $('#six').bind('click', function() {
+          number(6);
+        });
+        $('#seven').bind('click', function() {
+          number(7);
+        });
+        $('#eight').bind('click', function() {
+          number(8);
+        });
+        $('#nine').bind('click', function() {
+          number(9);
+        });
+    } //數字點選
+
+    $('#none').bind('click', function() {
+      none(); //全不選設定
+    });
+    $('#all').bind('click', function() {
+      all(); //全選設定
+    });
+    $('#adds').bind('click', function() {
+      $('#adds').val(""); //一點預計加總的框框，自動清除裏面數字
+    });
+  </script>
+</body>
+
+</html>
